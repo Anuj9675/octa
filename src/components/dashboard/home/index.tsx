@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { FaCalendarPlus, FaClock, FaHistory, FaUsers } from "react-icons/fa"
 
 export const Home = () => {
@@ -72,9 +73,7 @@ export const Home = () => {
               Plan your next meeting quickly and send invites to your participants.
             </p>
           </div>
-          <button className="bg-white text-indigo-700 px-5 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
-            Schedule Now
-          </button>
+          <Link href="/schedules" className="inline-block hover:scale-105 transition-transform cursor-pointer  bg-white text-center text-indigo-700 font-semibold py-2 px-4 rounded-md transition-colors" >Schedule</Link>
         </div>
       </div>
 

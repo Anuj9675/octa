@@ -35,7 +35,7 @@ interface SidebarProps {
 const sidebarItems: SidebarItem[] = [
   { id: "dashboard", label: "Dashboard", icon: FaChartLine, href: "/" },
   { id: "events", label: "Events", icon: FaCalendarAlt, href: "/events" },
-  { id: "meetings", label: "Meetings", icon: FaClock, href: "/meetings" },
+  { id: "schedule", label: "Schedule", icon: FaClock, href: "/schedules" },
   { id: "tasks", label: "Tasks", icon: FaTasks, href: "/tasks" },
   {
     id: "contacts",

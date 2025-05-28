@@ -153,7 +153,7 @@ export function EventsPage() {
                           </button>
                           <button
                             onClick={() => deleteEvent(id)}
-                            className="text-red-500 hover:text-red-400 cursor-pointer "
+                            className="text-red-500 hover:text-red-400 cursor-pointer hover:transform hover:scale-105 transition-transform "
                             aria-label="Delete Event"
                           >
                             <FiTrash2 className="inline text-lg" />
@@ -220,14 +220,14 @@ export function EventsPage() {
               <button
                 type="button"
                 onClick={resetForm}
-                className="px-4 py-2 rounded bg-indigo-600 text-white text-sm hover:bg-indigo-500 transition-colors"
+                className="px-4 py-2 rounded text-sm bg-white text-indigo-700 transition-colors"
               >
                 Cancel
               </button>
             )}
             <button
               type="submit"
-              className="px-4 h-8 text-sm text-white bg-indigo-500 rounded shadow hover:bg-indigo-600 transition transform duration-150"
+              className="px-4 h-8 text-sm bg-white text-indigo-700 rounded shadow  transition transform duration-150"
             >
               {editingId ? "Update" : "Add"} Event
             </button>

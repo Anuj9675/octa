@@ -2,7 +2,7 @@ import { atom } from "recoil"
 
 export interface EventItem {
   id: string
-  date: string // format: YYYY-MM-DD
+  date: string 
   title: string
 }
 
