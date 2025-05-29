@@ -9,6 +9,7 @@ import {
   FaBars,
   FaSearch,
   FaEllipsisV,
+  FaTimes,
 } from "react-icons/fa";
 import { FiSidebar } from "react-icons/fi";
 import { SearchBar } from "../searchbar";
@@ -27,7 +28,14 @@ const getPageTitle = (path: string) => {
     "/profile": "Profile",
   };
 
-  return pathMap[path] || path.split("/").filter(Boolean).map(str => str[0].toUpperCase() + str.slice(1)).join(" / ");
+  return (
+    pathMap[path] ||
+    path
+      .split("/")
+      .filter(Boolean)
+      .map((str) => str[0].toUpperCase() + str.slice(1))
+      .join(" / ")
+  );
 };
 
 export const Navbar = ({ sidebarOpen, setSidebarOpen }: NavbarProps) => {
@@ -43,10 +51,16 @@ export const Navbar = ({ sidebarOpen, setSidebarOpen }: NavbarProps) => {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
-      if (mobileSearchRef.current && !mobileSearchRef.current.contains(event.target as Node)) {
+      if (
+        mobileSearchRef.current &&
+        !mobileSearchRef.current.contains(event.target as Node)
+      ) {
         setMobileSearchOpen(false);
       }
     }
@@ -73,7 +87,11 @@ export const Navbar = ({ sidebarOpen, setSidebarOpen }: NavbarProps) => {
             className="p-2 rounded-md hover:bg-gray-800 transition-colors cursor-pointer"
             aria-label="Toggle Sidebar"
           >
-            {sidebarOpen ? <FiSidebar className="text-lg" /> : <FaBars className="text-lg" />}
+            {sidebarOpen ? (
+              <FiSidebar className="text-lg" />
+            ) : (
+              <FaBars className="text-lg" />
+            )}
           </button>
           <div className="text-lg font-semibold text-white ml-2">{pageTitle}</div>
         </div>
@@ -97,7 +115,10 @@ export const Navbar = ({ sidebarOpen, setSidebarOpen }: NavbarProps) => {
             <button className={`${baseBtnStyle} ${defaultBtn}`} title="Notifications">
               <FaBell />
             </button>
-            <button className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-semibold hover:bg-purple-700 transition-colors" title="Profile">
+            <button
+              className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-semibold hover:bg-purple-700 transition-colors"
+              title="Profile"
+            >
               <FaUserCircle className="text-lg" />
             </button>
           </div>
@@ -107,9 +128,9 @@ export const Navbar = ({ sidebarOpen, setSidebarOpen }: NavbarProps) => {
             <button
               onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
               className="p-2 rounded-md hover:bg-gray-800 transition-colors"
-              aria-label="Search"
+              aria-label={mobileSearchOpen ? "Close Search" : "Open Search"}
             >
-              <FaSearch />
+              {mobileSearchOpen ? <FaTimes /> : <FaSearch />}
             </button>
 
             <div className="relative" ref={dropdownRef}>
@@ -141,20 +162,23 @@ export const Navbar = ({ sidebarOpen, setSidebarOpen }: NavbarProps) => {
         </div>
       </div>
 
-      {/* Mobile Search Dropdown */}
-      {mobileSearchOpen && (
-        <div
-          ref={mobileSearchRef}
-          className="sm:hidden absolute top-14 left-0 right-0 bg-gray-900 border-t border-gray-700 p-2 z-40"
-        >
-          <SearchBar
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            handleSearch={handleSearch}
-            isMobile
-          />
-        </div>
-      )}
+      {/* Mobile Search Dropdown with Animation */}
+      <div
+        ref={mobileSearchRef}
+        className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out absolute top-14 left-0 right-0 bg-gray-900 border-t border-gray-700 px-2 z-40 ${
+          mobileSearchOpen
+            ? "max-h-40 opacity-100 scale-y-100 py-2"
+            : "max-h-0 opacity-0 scale-y-95 py-0"
+        }`}
+        style={{ transformOrigin: "top" }}
+      >
+        <SearchBar
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          handleSearch={handleSearch}
+          isMobile
+        />
+      </div>
     </nav>
   );
 };

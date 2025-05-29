@@ -1,4 +1,3 @@
-
 "use client";
 
 import { FaSearch } from "react-icons/fa";
@@ -22,16 +21,16 @@ export const SearchBar = ({
       onSubmit={handleSearch}
       className={`relative ${isMobile ? "w-full px-4 py-2" : ""}`}
     >
-      <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
+      
+      <FaSearch className="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm pointer-events-none" />
+
       <input
         type="text"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Dashboard Search (Ctrl + /)"
-        className="w-full bg-gray-800/50 border border-gray-700/50 rounded-md pl-10 pr-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+        className="w-full bg-gray-800/50 border border-gray-700/50 rounded-md pl-12 pr-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
       />
     </form>
   );
 };
-
-
