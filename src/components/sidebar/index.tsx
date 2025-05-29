@@ -63,7 +63,12 @@ const sidebarItems: SidebarItem[] = [
     id: "settings",
     label: "Settings",
     icon: FaCog,
-    href: "/settings",
+    submenu: [
+      { id: "profileSettings", label: "Profile", icon: FaUserCircle, href: "/settings/profile" },
+      { id: "notificationSettings", label: "Notifications", icon: FaBell, href: "/settings/notifications" },
+      { id: "accountSettings", label: "Account", icon: FaCog, href: "/settings/account" },
+      { id: "helpSupport", label: "Help & Support", icon: FaQuestionCircle, href: "/settings/help" },
+    ],
   },
   {
     id: "support",
@@ -86,16 +91,16 @@ export const Sidebar = ({ isOpen, onItemClick }: SidebarProps) => {
 
   const handleItemClick = (item: SidebarItem) => {
     onItemClick?.(item);
-    if (item.href) {
-      router.push(item.href);
-    }
+
     if (item.submenu) {
       setOpenSubmenus((prev) => ({
         ...prev,
         [item.id]: !prev[item.id],
       }));
-    } else {
-      setOpenSubmenus({});
+    }
+
+    if (item.href) {
+      router.push(item.href);
     }
   };
 
@@ -159,8 +164,9 @@ export const Sidebar = ({ isOpen, onItemClick }: SidebarProps) => {
           <div className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center">
             <FaCalendarAlt className="text-white text-sm" />
           </div>
-          <span className="text-sm font-medium text-gray-300 uppercase tracking-wider">
-            Meeting Scheduler
+
+          <span className="text-md md:text-xl font-medium text-gray-300 uppercase tracking-wider">
+            Scheduler
           </span>
         </div>
       </div>

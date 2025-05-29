@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Calendar } from "../calendar";
+import { Calendar } from "../../calendar";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { Meeting } from "@/src/types/meeting";
 

@@ -3,4 +3,5 @@ export * from './sidebar';
 export * from './clientwrapper';
 export * from './calendar'
 export * from './loadingspinner'
-export * from './scheduler';
+export * from './dashboard';
+export * from './searchbar'

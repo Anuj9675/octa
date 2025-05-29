@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Form, TodoList } from "@/src/components/task"
+import { Form, TodoList } from "@/src/components/dashboard"
 
 interface TodoItem {
   id: number
